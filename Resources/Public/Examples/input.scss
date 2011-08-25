@@ -1,0 +1,50 @@
+@if lightness($main-color) < 10% {
+	$text-color: lighten($main-color,15%);
+} @else {
+	$text-color: darken($main-color,20%);
+}
+
+body {
+	background-color:transparentize($main-color, 0.8);
+	background-image:none;
+	nav {
+		background-color:$main-color;
+		background: -moz-linear-gradient(top, $main-color, darken($main-color,20%));
+		background: -webkit-gradient(linear, left top, left bottom, from($main-color), to(darken($main-color,20%)));
+		box-shadow: 3px 3px 5px lighten($text-color, 10%) ;
+		ul li ul{
+			background-color:darken($main-color,20%);
+		}
+	}
+	article, aside{
+		background-color:transparentize($main-color, 0.8);
+		p {
+			color:$text-color;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			text-shadow: lighten($main-color,30%) 2px 2px 3px;
+			color:darken($main-color,20%);
+		}
+		a {
+			color: $text-color;
+		}
+		a:hover {
+			text-decoration:underline;
+		}
+	}
+}
+footer, footer a {
+	border-top-color:lighten($main-color, 10%);
+	color:lighten($main-color, 10%);
+}
+
+article {
+	float:$contentDirection;
+}
+aside {
+	@if $contentDirection == right {
+		float:left;
+	} @else {
+		float:right;
+	}
+}

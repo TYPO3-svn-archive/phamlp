@@ -1,0 +1,7 @@
+config.tx_phamlp_pi1 {
+	# cat=plugin.phamlp.example; type=color; label= basic color for the stylesheet ...
+	variables.main-color = silver
+	
+	# cat=plugin.phamlp.example; type=options[left,right]; label= float of the content container...
+	variables.contentDirection = left
+}

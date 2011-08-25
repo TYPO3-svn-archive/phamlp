@@ -1,0 +1,14 @@
+
+includeLibs.ts_news = EXT:phamlp/Classes/Pi1/class.tx_phamlp_pi1.php
+
+plugin.tx_phamlp = USER
+plugin.tx_phamlp {
+	#processor
+	userFunc = tx_phamlp_pi1->main
+	# use textbased css
+	dynamicCss = 
+	# scss or sassfile
+	inputFile = 
+	# output css file name
+	outputCssFile = 
+}

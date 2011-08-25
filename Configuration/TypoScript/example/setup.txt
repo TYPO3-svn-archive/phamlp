@@ -1,0 +1,47 @@
+
+includeLibs.ts_news = EXT:phamlp/Classes/Pi1/class.tx_phamlp_pi1.php
+
+plugin.tx_phamlp_pi1 = USER_INT
+plugin.tx_phamlp_pi1 {
+	#processor
+	userFunc = tx_phamlp_pi1->main
+	# use textbased css
+	# dynamicCss = 
+	# scss or sassfile
+	inputFile = TEXT
+	inputFile {
+		value = EXT:phamlp/Resources/Public/Examples/input.scss
+	}
+	# output css file name
+	outputCssFile = COA
+	outputCssFile {
+		wrap = typo3temp/sass/output-for-template-of-pid-|.css
+		10 = USER
+		10 {
+			userFunc= Tx_Phamlp_Utils_PhamlpUtil->getNearestTemplate
+		}
+	}
+	#set scss variables
+	variables {
+		main-color = {$config.tx_phamlp_pi1.variables.main-color}
+		contentDirection = {$config.tx_phamlp_pi1.variables.contentDirection}
+	}
+	debug = 0
+}
+
+page.headerData.98237594 < plugin.tx_phamlp_pi1.outputCssFile
+page.headerData.98237594.stdWrap.outerWrap = <link rel="stylesheet" type="text/css" href="|">
+
+
+# ideas how to solve that with TS ...
+	#debugData = 0
+	#debugFunc = 0
+	#data = TSFE:tmpl|absoluteRootLine|{TSFE:tmpl|outermostRootlineIndexWithTemplate}|uid
+	
+	#data = field:uid
+	
+	#data = TSFE:tmpl|absoluteRootLine
+	#setCurrent = TSFE:tmpl|outermostRootlineIndexWithTemplate
+	
+	# data = TSFE:tmpl|rowSum|0|0
+	# data = TSFE:tmpl|hierarchyInfo
