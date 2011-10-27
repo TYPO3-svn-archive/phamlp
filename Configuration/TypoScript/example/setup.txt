@@ -33,7 +33,7 @@ page.headerData.98237594 < plugin.tx_phamlp_pi1.outputCssFile
 page.headerData.98237594.stdWrap.outerWrap = <link rel="stylesheet" type="text/css" href="|">
 
 
-# ideas how to solve that with TS ...
+# ideas how to solve that with pure TS ...
 	#debugData = 0
 	#debugFunc = 0
 	#data = TSFE:tmpl|absoluteRootLine|{TSFE:tmpl|outermostRootlineIndexWithTemplate}|uid
