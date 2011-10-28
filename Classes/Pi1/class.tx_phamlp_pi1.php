@@ -61,9 +61,6 @@ class tx_phamlp_pi1 extends tslib_pibase {
 			// calculate output path
 		$outputFilename = $GLOBALS['TSFE']->cObj->cObjGetSingle($conf['outputCssFile'],$conf['outputCssFile.']);
 		$outputFilename = t3lib_div::getFileAbsFileName($outputFilename);
-			// setup parsers
-		$parser = Tx_Phamlp_Utils_PhamlpUtil::getSassParser();
-		
 			//convert TS Vars to CSS vars
 		if(is_array($conf['variables.'])) {
 			foreach($conf['variables.'] as $varName => $varValue) {
@@ -73,8 +70,17 @@ class tx_phamlp_pi1 extends tslib_pibase {
 			//read file or use dynamic scss
 		if(is_file($inputFilename)) {
 			$filebuffer .= file_get_contents($inputFilename);
+				// setup parser
+			$options = array(
+				'load_paths' => array(
+					dirname($inputFilename)
+				)
+			);
+			$parser = Tx_Phamlp_Utils_PhamlpUtil::getSassParser($options);
 		} else {
 			$filebuffer .= $conf['dynamicCss'];
+				// setup parser
+			$parser = Tx_Phamlp_Utils_PhamlpUtil::getSassParser();
 		}
 			//parse and convert
 		if($conf['debug'] !== '1' ) {
